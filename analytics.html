@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Analytics — MindPulse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="app.css" />
+</head>
+<body>
+<div class="noise-overlay" aria-hidden="true"></div>
+<div id="nav-root"></div>
+
+<header class="site-header compact">
+  <div class="header-inner">
+    <h1 class="title">Analytics</h1>
+    <p class="subtitle">What 5,000 students' data says about habits and mental health scores, plus your own prediction history.</p>
+  </div>
+</header>
+
+<main class="an-wrap" id="an-root">
+  <div class="empty-note">Loading statistics…</div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="auth.js"></script>
+<script src="analytics.js"></script>
+</body>
+</html>

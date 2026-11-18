@@ -1,0 +1,110 @@
+/* ---------- top nav ---------- */
+.topnav {
+  position: relative; z-index: 2;
+  max-width: 1180px; margin: 0 auto; padding: 18px 24px 0;
+  display: flex; align-items: center; gap: 28px;
+}
+.brand {
+  font-family: var(--font-display); font-size: 22px; font-weight: 600;
+  color: var(--pine-deep); text-decoration: none; letter-spacing: -0.01em;
+}
+.nav-links { display: flex; gap: 6px; flex: 1; }
+.nav-link {
+  font-size: 14px; font-weight: 600; color: var(--ink-soft); text-decoration: none;
+  padding: 8px 14px; border-radius: 100px; transition: background .15s, color .15s;
+}
+.nav-link:hover { background: var(--paper-deep); color: var(--ink); }
+.nav-link.active { background: var(--pine); color: #fff; }
+.nav-user { display: flex; align-items: center; gap: 12px; }
+.nav-name { font-size: 13.5px; color: var(--ink-soft); font-weight: 500; }
+.nav-logout {
+  font-family: var(--font-body); font-size: 13px; font-weight: 600; color: var(--pine-deep);
+  background: transparent; border: 1.5px solid var(--line); border-radius: var(--radius-sm);
+  padding: 7px 14px; cursor: pointer; transition: border-color .15s, background .15s;
+}
+.nav-logout:hover { border-color: var(--pine); background: var(--pine-tint); }
+.nav-link:focus-visible, .nav-logout:focus-visible, .brand:focus-visible,
+.auth-card a:focus-visible { outline: 2px solid var(--pine); outline-offset: 2px; }
+
+.site-header.compact { padding: 36px 24px 24px; }
+
+/* ---------- auth pages ---------- */
+.auth-wrap {
+  position: relative; z-index: 1; min-height: 100vh;
+  display: grid; grid-template-columns: 1fr 1fr;
+}
+.auth-aside {
+  background: linear-gradient(165deg, var(--pine-deep) 0%, var(--pine) 100%);
+  color: #EAF3EE; padding: 64px 56px; display: flex; flex-direction: column; justify-content: space-between;
+}
+.auth-aside .brand { color: #fff; }
+.auth-aside h2 {
+  font-family: var(--font-display); font-weight: 500; font-size: clamp(2rem, 3.4vw, 2.8rem);
+  line-height: 1.1; margin: 0 0 16px; max-width: 420px;
+}
+.auth-aside p { color: rgba(234,243,238,.72); max-width: 380px; margin: 0; font-size: 15px; }
+.auth-aside small { color: rgba(234,243,238,.5); font-size: 12.5px; }
+.auth-main { display: flex; align-items: center; justify-content: center; padding: 40px 24px; }
+.auth-card { width: 100%; max-width: 400px; }
+.auth-card h1 { font-family: var(--font-display); font-weight: 500; font-size: 2rem; color: var(--pine-deep); margin: 0 0 6px; }
+.auth-card .lead { color: var(--ink-soft); font-size: 14.5px; margin: 0 0 26px; }
+.auth-card form { display: flex; flex-direction: column; gap: 16px; }
+.auth-card .submit-btn { justify-content: center; width: 100%; margin-top: 6px; }
+.auth-alt { margin-top: 20px; font-size: 14px; color: var(--ink-soft); }
+.auth-alt a { color: var(--pine); font-weight: 600; }
+.form-alert {
+  display: none; font-size: 13.5px; color: #9C2F2B; background: #FBEEEE;
+  border: 1px solid #F0C7C5; border-radius: var(--radius-sm); padding: 10px 12px;
+}
+.form-alert.show { display: block; }
+
+/* ---------- analytics ---------- */
+.an-wrap { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; padding: 0 24px 56px; }
+.kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-bottom: 20px; }
+.kpi { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 16px 18px; }
+.kpi .k-label { font-size: 12.5px; color: var(--ink-soft); font-weight: 500; }
+.kpi .k-value { font-family: var(--font-mono); font-size: 28px; font-weight: 700; color: var(--pine-deep); margin-top: 4px; }
+.kpi .k-unit { font-size: 13px; color: var(--ink-soft); font-weight: 500; margin-left: 3px; }
+.kpi.accent { background: var(--pine); border-color: var(--pine); }
+.kpi.accent .k-label { color: rgba(234,243,238,.75); }
+.kpi.accent .k-value, .kpi.accent .k-unit { color: #fff; }
+
+.chart-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+.chart-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 20px 22px 18px; grid-column: span 6; min-width: 0; }
+.chart-card.wide { grid-column: span 12; }
+.chart-card.third { grid-column: span 4; }
+.chart-card h3 { margin: 0 0 2px; font-size: 15px; font-weight: 600; color: var(--ink); }
+.chart-card .sub { margin: 0 0 14px; font-size: 12.5px; color: var(--ink-soft); }
+.chart-box { position: relative; height: 270px; }
+.chart-card.wide .chart-box { height: 300px; }
+
+.section-title { font-family: var(--font-display); font-weight: 500; font-size: 1.5rem; color: var(--pine-deep); margin: 34px 0 14px; }
+
+.hist-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.hist-table th { text-align: left; font-size: 12.5px; color: var(--ink-soft); font-weight: 600; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+.hist-table td { padding: 10px; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+.hist-table td.score { font-family: var(--font-mono); font-weight: 700; color: var(--pine-deep); }
+.empty-note { color: var(--ink-soft); font-size: 14px; padding: 18px 0 4px; }
+.empty-note a { color: var(--pine); font-weight: 600; }
+.table-scroll { overflow-x: auto; }
+.load-error { background: #FBEEEE; border: 1px solid #F0C7C5; color: #9C2F2B; padding: 14px 16px; border-radius: var(--radius-sm); font-size: 14px; }
+
+@media (max-width: 920px) {
+  .chart-card, .chart-card.third { grid-column: span 12; }
+  .auth-wrap { grid-template-columns: 1fr; }
+  .auth-aside { display: none; }
+}
+@media (max-width: 560px) {
+  .topnav { padding: 14px 16px 0; gap: 12px; flex-wrap: wrap; }
+  .nav-name { display: none; }
+  .an-wrap { padding: 0 16px 40px; }
+}
+
+/* password inputs share the text input look */
+input[type="password"] {
+  font-family: var(--font-body); font-size: 15px; color: var(--ink); background: var(--paper);
+  border: 1.5px solid var(--line); border-radius: var(--radius-sm); padding: 11px 12px; width: 100%;
+  transition: border-color .15s ease, background .15s ease, box-shadow .15s ease; appearance: none;
+}
+input[type="password"]:hover { border-color: #B9C6B7; }
+input[type="password"]:focus { outline: none; border-color: var(--pine); background: var(--surface); box-shadow: 0 0 0 3px var(--pine-tint); }

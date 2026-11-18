@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Create account — MindPulse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="app.css" />
+</head>
+<body>
+<div class="auth-wrap">
+  <aside class="auth-aside">
+    <a href="login.html" class="brand">MindPulse</a>
+    <div>
+      <h2>Track your score. Spot what moves it.</h2>
+      <p>Every prediction is saved to your account, so you can see how your habits change over time.</p>
+    </div>
+    <small>Informational only, not a clinical assessment.</small>
+  </aside>
+  <main class="auth-main">
+    <div class="auth-card">
+      <h1>Create your account</h1>
+      <p class="lead">It takes less than a minute.</p>
+      <form id="register-form" novalidate>
+        <div class="form-alert" id="form-alert" role="alert"></div>
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" autocomplete="name" placeholder="Your name" />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="text" id="email" autocomplete="email" placeholder="you@example.com" />
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" autocomplete="new-password" placeholder="At least 6 characters" />
+        </div>
+        <div class="field">
+          <label for="confirm">Confirm password</label>
+          <input type="password" id="confirm" autocomplete="new-password" placeholder="Repeat password" />
+        </div>
+        <button type="submit" class="submit-btn" id="submit-btn"><span class="btn-label">Create account</span><span class="btn-spinner" aria-hidden="true"></span></button>
+      </form>
+      <p class="auth-alt">Already have an account? <a href="login.html">Log in</a></p>
+    </div>
+  </main>
+</div>
+<script src="auth.js"></script>
+<script>
+  redirectIfLoggedIn();
+  const form = document.getElementById("register-form");
+  const alertBox = document.getElementById("form-alert");
+  const btn = document.getElementById("submit-btn");
+  const $ = (id) => document.getElementById(id);
+  function showAlert(msg) { alertBox.textContent = msg; alertBox.classList.add("show"); }
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    alertBox.classList.remove("show");
+    const name = $("name").value.trim(), email = $("email").value.trim(), password = $("password").value;
+    if (name.length < 2) return showAlert("Enter your name (at least 2 characters).");
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return showAlert("Enter a valid email address.");
+    if (password.length < 6) return showAlert("Password must be at least 6 characters.");
+    if (password !== $("confirm").value) return showAlert("Passwords don't match.");
+    btn.disabled = true; btn.classList.add("loading");
+    try {
+      const res = await fetch(API_BASE + "/register", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, password }),
+      });
+      const body = await res.json().catch(() => ({}));
+      if (!res.ok) return showAlert(typeof body.detail === "string" ? body.detail : "Could not create the account. Check your details.");
+      Auth.save(body);
+      window.location.replace("index.html");
+    } catch (_) {
+      showAlert("Can't reach the server at " + API_BASE + ". If it's on Render free tier, wait 30-60s and retry.");
+    } finally { btn.disabled = false; btn.classList.remove("loading"); }
+  });
+</script>
+</body>
+</html>
