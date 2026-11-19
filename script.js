@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  // API_BASE, apiFetch() aur login token auth.js se aate hain
+ 
 
   const form = document.getElementById("predict-form");
   const submitBtn = document.getElementById("submit-btn");

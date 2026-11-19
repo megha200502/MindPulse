@@ -37,7 +37,7 @@
   .display{font-family:'Barlow Condensed', sans-serif; text-transform:uppercase; letter-spacing:0.04em;}
   code, .mono{font-family:'IBM Plex Mono', monospace;}
 
-  /* ===== Title block / hero ===== */
+  /* ===== Title block /  ===== */
   .titleblock{
     border:1px solid var(--line);
     margin:24px;
@@ -350,8 +350,8 @@
 
 <script>
 (function(){
-  // ---- checklist state + progress ----
-  const phases = {1:8, 2:4, 3:0, 4:4, 5:4}; // item counts per phase (phase3 has none, counted via itself if added later)
+
+  const phases = {1:8, 2:4, 3:0, 4:4, 5:4}
   const allBoxes = Array.from(document.querySelectorAll('.checklist input[type=checkbox]'));
 
   function updateProgress(){
