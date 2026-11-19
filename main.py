@@ -69,7 +69,6 @@ def health_adjustments(data):
 # ======================================================================
 DB_PATH = os.path.join(BASE_DIR, "users.db")
 
-# CSV ka naam kuch bhi ho (spaces / underscores / (1)), folder ki "mental" wali CSV pick ho jayegi
 _csvs = glob.glob(os.path.join(BASE_DIR, "*.csv"))
 CSV_PATH = next(
     (p for p in _csvs if "mental" in os.path.basename(p).lower()),
